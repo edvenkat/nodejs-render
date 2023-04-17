@@ -2,7 +2,8 @@
   "name": "venkat",
   "version": "0.0.1",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "clientstart": "node client.js"
   },
   "dependencies": {
     "ejs": "^3.1.9",
