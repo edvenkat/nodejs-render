@@ -1,0 +1,222 @@
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+</head>
+
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #70c1b3;
+        width: 85%;
+    }
+
+    .image_wrapper {
+        position: relative;
+    }
+
+    .overlay {
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+
+    .overlay_1 {
+        left: 0;
+        /* bottom: 0; */
+        width: 50%;
+        height: 33%;
+        padding: 1rem;
+        transform: scale(0);
+        transition: all .3s ease-in-out;
+        backdrop-filter: blur(8px) brightness(10%);
+        transform: scale(1);
+        /* border:10px solid; */
+        background-color: #23fb43;
+    }
+
+    .overlay_2 {
+        left: 55%;
+        bottom: 0;
+        width: 50%;
+        height: 33%;
+        padding: 1rem;
+        transform: scale(0);
+        transition: all .3s ease-in-out;
+        backdrop-filter: blur(8px) brightness(10%);
+        transform: scale(1);
+        background-color: #FF1493;
+    }
+
+    .overlay_3 {
+        left: 0;
+        top: 33%;
+        bottom: 0;
+        width: 50%;
+        height: 33%;
+        padding: 1rem;
+        transform: scale(0);
+        transition: all .3s ease-in-out;
+        backdrop-filter: blur(8px) brightness(10%);
+        transform: scale(1);
+        background-color: #FF4500;
+    }
+
+    .overlay_4 {
+        left: 55%;
+        top: 33%;
+        bottom: 0;
+        width: 50%;
+        height: 33%;
+        padding: 1rem;
+        transform: scale(0);
+        transition: all .3s ease-in-out;
+        backdrop-filter: blur(8px) brightness(10%);
+        transform: scale(1);
+        background-color: #FF00FF;
+    }
+
+    .overlay_5 {
+        left: 0;
+        top: 66%;
+        bottom: 0;
+        width: 50%;
+        height: 33%;
+        padding: 1rem;
+        transform: scale(0);
+        transition: all .3s ease-in-out;
+        backdrop-filter: blur(8px) brightness(10%);
+        transform: scale(1);
+        background-color: #4B0082;
+    }
+
+    .overlay_6 {
+        right: 0;
+        left: 55%;
+        top: 66%;
+        bottom: 0;
+        width: 50%;
+        height: 33%;
+        padding: 1rem;
+        transform: scale(0);
+        transition: all .3s ease-in-out;
+        backdrop-filter: blur(8px) brightness(10%);
+        transform: scale(1);
+        background-color: #00FFFF;
+    }
+
+    .image_wrapper .overlay_1_hover,
+    .overlay_2_hover,
+    .overlay_3_hover {
+        transform: scale(0);
+    }
+
+    .image_wrapper .overlay_4_hover,
+    .overlay_5_hover,
+    .overlay_6_hover {
+        transform: scale(0);
+    }
+</style>
+
+<div class="game">
+
+    <div class="container">
+        <li class="image_wrapper" id="image_wrappers">
+            <img id="image_idp" src="/assets/imgs/ielts-home.png" style="width:250px;height:500px" />
+            <div class="overlay overlay_1">1</div>
+            <div class="overlay overlay_2">2</div>
+            <div class="overlay overlay_3">3</div>
+            <div class="overlay overlay_4">4</div>
+            <div class="overlay overlay_5">5</div>
+            <div class="overlay overlay_6">6</div>
+        </li>
+    </div>
+</div>
+
+
+<div style="position:absolute;left:0;">
+    <button id="random">random pick</button>
+    <button id="removeOverlay">show image</button>
+</div>
+<div style="position:absolute;right:0;opacity: 0.1;">
+<button class="opentitle" id="1">1</button>
+<button class="opentitle" id="2">2</button>
+<button class="opentitle" id="3">3</button>
+<button class="opentitle" id="4">4</button>
+<button class="opentitle" id="5">5</button>
+<button class="opentitle" id="6">6</button>
+<div id="connected"></div>
+</div>
+
+<script>
+    // const socket = new WebSocket('ws://192.168.29.97:6969');
+    const socket = new WebSocket('wss://nodejs-serve.onrender.com');
+
+    
+    socket.onopen = () => {
+    //   alert('Connection opened!');
+      document.getElementById('connected').innerHTML = "Connection opened!"
+      socket.onmessage = function(event) {
+        console.log("espage",event.data);
+        console.log(JSON.parse(event.data))
+        let data = JSON.parse(event.data);
+        let type = data[0].type;
+        let option = data[0].option;
+        if(type=="game3") {
+            $("#"+option).trigger("click");
+        }
+      };
+      socket.on('message',data=>{
+        console.log("user sended:",data.toString())
+    })
+    }
+    var image = []
+    $(document).ready(function () {
+        var openindex = 0;
+        $(".opentitle").click(function (e) {
+            console.log($(this))
+            var id = $(this).attr('id');
+            console.log("id", id);
+            // id = 3
+            console.log("overlay_" + id + "_hover");
+            console.log("#overlay_" + id);
+            if(openindex<2) {
+                openindex += 1;
+                $(".overlay_" + id).addClass("overlay_" + id + "_hover");
+            }
+            
+        })
+        var imageList = ['whatuni-search.png', 'whatuni-open.png', 'fastlane.png', 'ielts-home.png', 'ielts-prepare.png']
+        var index = 0;
+        $("#image_idp").attr('src', '/assets/imgs/' + imageList[index]);
+
+        $("#random").click(function (e) {
+            openindex = 0;
+            for (var i = 1; i <= 6; i++) {
+                $('.overlay').removeClass('overlay_' + i + '_hover')
+            }
+            setTimeout(function () {
+                if (index < 4) {
+                    index += 1;
+                    $("#image_idp").attr('src', '/assets/imgs/' + imageList[index]);
+                } else {
+                    index = 0
+                    $("#image_idp").attr('src', '/assets/imgs/' + imageList[index]);
+                }
+            }, 1000)
+
+
+        })
+        $("#removeOverlay").click(function (e) {
+
+            // var elDiceOne = document.getElementById('image_wrappers');
+            for (var i = 1; i <= 6; i++) {
+                $('.overlay').addClass('overlay_' + i + '_hover')
+            }
+        })
+
+
+    });
+
+</script>

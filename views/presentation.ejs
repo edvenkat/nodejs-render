@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Start your development with Meyawo landing page.">
+    <meta name="author" content="Devcrud">
+    <title>Meyawo Landing page | Free Bootstrap 4.3.x landing page</title>
+    <!-- font icons -->
+    <link rel="stylesheet" href="assets/vendors/themify-icons/css/themify-icons.css">
+    <!-- Bootstrap + Meyawo main styles -->
+    <link rel="stylesheet" href="assets/css/meyawo.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            /* font-family: "Cinzel", serif; */
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        p {
+            margin: 0;
+        }
+
+        main {
+            display: flex;
+            justify-content: center;
+            background-color: #fff;
+            flex-direction: row;
+        }
+
+        .book {
+            --book-height: 250px;
+            --book-ratio: 1.3;
+            /* width:50% */
+            margin-right: 100px;
+            margin-left: 100px;
+        }
+
+        .book>div {
+            height: var(--book-height);
+            width: calc(var(--book-height) / var(--book-ratio));
+            overflow: auto;
+            background-color: #0a0a0a;
+            transform: scale(0.9);
+            border-radius: 6px;
+            transform-origin: left;
+        }
+
+        .book-cover {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            z-index: 9;
+            text-align: center;
+            background: linear-gradient(135deg, black 25%, transparent 25%) -50px 0,
+                linear-gradient(225deg, black 25%, transparent 25%) -50px 0,
+                linear-gradient(315deg, black 25%, transparent 25%),
+                linear-gradient(45deg, black 25%, transparent 25%);
+            background-size: 2em 2em;
+            background-color: #232323;
+            color: white;
+            transition: transform 2s;
+        }
+
+        .book-cover::before {
+            content: "";
+            position: absolute;
+            width: 20px;
+            right: 20px;
+            top: 0;
+            bottom: 0;
+            background-color: #b11509;
+        }
+
+        h1 {
+            font-family: "Petemoss", cursive;
+            font-size: 98px;
+            font-weight: 300;
+            color: #dbd75d;
+        }
+
+        h2 {
+            font-size: 16px;
+        }
+
+        .separator {
+            --separator-size: 8px;
+            width: var(--separator-size);
+            height: var(--separator-size);
+            background-color: #dbd75d;
+            margin: 50px auto 60px auto;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .separator::after,
+        .separator::before {
+            content: "";
+            position: absolute;
+            width: 12px;
+            background-color: white;
+            height: 2px;
+            top: calc(50% - 1px);
+        }
+
+        .separator::after {
+            left: 15px;
+        }
+
+        .separator::before {
+            right: 15px;
+        }
+
+        .book-content {
+            transform: scale(0.9) translateY(30px);
+            background-color: #36454f !important;
+            transition: all 0.3s 1s;
+            display : flex;
+  align-items : center;
+        }
+
+        .book-content h3,
+        .book-content p {
+            opacity: 0;
+            transition: all 0.3s 0.3s;
+            color: white;
+        }
+
+        h3 {
+            padding: 30px;
+        }
+
+        p {
+            padding: 0px 30px 10px 30px;
+            text-align: justify;
+            font-size: 14px;
+        }
+
+        .book-cover>div {
+            transition: opacity 0s 0.6s;
+        }
+
+        /* .book:hover>.book-cover {
+            transform: rotateY(180deg) scale(0.9);
+        }
+    
+        .book:hover>.book-cover>div {
+            opacity: 0;
+        }
+    
+        .book:hover>.book-content {
+            transform: scale(0.9) translateY(0px);
+        }
+    
+        .book:hover>.book-content h3,
+        .book:hover>.book-content p {
+            opacity: 1;
+        } */
+
+        .book-hover>.book-cover {
+            transform: rotateY(180deg) scale(0.9);
+        }
+
+        .book-hover>.book-cover>div {
+            opacity: 0;
+        }
+
+        .book-hover>.book-content {
+            transform: scale(0.9) translateY(0px);
+        }
+
+        .book-hover>.book-content h3,
+        .book-hover>.book-content p {
+            opacity: 1;
+        }
+    </style>
+
+</head>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
+
+    <!-- Page Navbar -->
+    <nav class="custom-navbar" data-spy="affix" data-offset-top="20">
+        <div class="container">
+            <a class="logo" href="#">Mobile App CoP</a>
+        </div>
+    </nav><!-- End of Page Navbar -->
+
+    <!-- page header -->
+    <header id="home" class="header">
+        <div class="overlay"></div>
+        <div class="header-content container" style="margin-right:0px;">
+            <h1 class="header-title">
+                <!-- <span class="up">Aim of CoP</span> -->
+                <!-- <span class="down">Mobile CoP</span> -->
+                <ul class="myul">
+                    Aim of CoP
+                    <li>To build a community accessible for everyone involved in mobile application development</li>
+                    <li>Through this community the entire development process should be streamlined </li>
+                    <li>To create a repository containing documents and materials to achieve the above</li>
+                </ul>
+            </h1>
+        </div>
+        <div class="header-content container" style="z-index:1;margin-right:0px;margin-left:100px">
+            <video width="320" height="240" id='vid' controls autoplay loop style="height:450px;width:211px;">
+                <source src="/assets/imgs/banner.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </header><!-- end of page header -->
+
+    <!-- about section -->
+    <section class="section pt-0" id="about">
+        <!-- container -->
+        <div class="container text-center">
+            <!-- about wrapper -->
+            <div class="about">
+                <div class="about-img-holder">
+                    <img src="/assets/imgs/iphone.png" class="about-img"
+                        alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page">
+                </div>
+                <div class="about-caption">
+                    <!-- <p class="section-subtitle">Who Am I ?</p> -->
+                    <h2 class="section-title mb-3">Mobile App</h2>
+                    <p>Our organization develops hybrid mobile apps not native apps. it runs on mobile devices like native apps. hybrid apps can be developed faster and more cost-effectively than native apps since they require less code and development time</p>
+                    <p>Technology : Ionic, Angular and Cordova Plugin </p>
+                    <p>Our app used most of the device features, including <b>push notifications(acoustic, Marketo, Xtremepush), social logins and share, user location, native storage</b></p>
+                    <!-- <button class="btn-rounded btn btn-outline-primary mt-4">Download CV</button> -->
+                    <h2 class="section-title mb-3">Mobile App CoP Activity</h2>
+                    <p>Further develop Team Knowledge to adhere to the guideline App code</p>
+                    <p>Updating standard code review document and adhere to it.</p>
+                    <p>Knowledge sharing for all.</p>
+
+                </div>
+            </div><!-- end of about wrapper -->
+        </div><!-- end of container -->
+    </section> <!-- end of about section -->
+
+    <!-- service section -->
+    <section class="section" id="service">
+        <div class="container text-center">
+            <!-- <p class="section-subtitle">What I Do ?</p> -->
+            <h6 class="section-title mb-6">Our Apps</h6>
+            <!-- row -->
+            <!-- <div class="separator"></div> -->
+            <!-- <h2>by Virginia Woolf</h2> -->
+            <div class="row">
+                <div class="col-12">
+                    <main>
+                        <div class="book" id="book-1">
+                            <div class="book-cover">
+                                <div>
+                                    <h3>Book 1</h3>
+                                    <div class="separator"></div>
+                                </div>
+                            </div>
+                            <div class="book-content">
+                                <h3 id="book1Text"></h3>
+                            </div>
+                        </div>
+                        <div class="book" id="book-2">
+                            <div class="book-cover">
+                                <div>
+                                    <h3>Book 2</h3>
+                                    <div class="separator"></div>
+                                </div>
+                            </div>
+                            <div class="book-content">
+                                <h3 id="book2Text"></h3>
+                            </div>
+                        </div>
+                    </main>
+                    <main>
+                        <div class="book" id="book-3">
+                            <div class="book-cover">
+                                <div>
+                                    <h3>Book 3</h3>
+                                    <div class="separator"></div>
+                                </div>
+                            </div>
+                            <div class="book-content">
+                                <h3 id="book3Text"></h3>
+                            </div>
+                        </div>
+                        <div class="book" id="book-4">
+                            <div class="book-cover">
+                                <div>
+                                    <h3>Book 4</h3>
+                                    <div class="separator"></div>
+                                </div>
+                            </div>
+                            <div class="book-content">
+                                <h3 id="book4Text"></h3>
+                            </div>
+                        </div>
+                    </main>
+
+                </div>
+                <button style="opacity: 0.1;" class="bookopen" id="1">1</button>
+                <button style="opacity: 0.01;" class="bookopen" id="2">2</button>
+                <button style="opacity: 0.1;" class="bookopen" id="3">3</button>
+                <button style="opacity: 0.01;" class="bookopen" id="4">4</button>
+                <!-- <div class="col-md-6 col-lg-3">
+                    <div class="service-card">
+                        <div class="body">
+                            <img src="assets/imgs/pencil-case.svg" alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page" class="icon">
+                            <h6 class="title">Adipisicing</h6>
+                            <p class="subtitle">Labore velit culpa adipisci excepturi consequuntur itaque in nam molestias dolorem iste quod.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="service-card">
+                        <div class="body">
+                            <img src="assets/imgs/responsive.svg" alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page" class="icon">
+                            <h6 class="title">Sapiente</h6>
+                            <p class="subtitle">Labore velit culpa adipisci excepturi consequuntur itaque in nam molestias dolorem iste quod.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="service-card">
+                        <div class="body">
+                            <img src="assets/imgs/toolbox.svg" alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page" class="icon">
+                            <h6 class="title">Placeat</h6>
+                            <p class="subtitle">Labore velit culpa adipisci excepturi consequuntur itaque in nam molestias dolorem iste quod.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="service-card">
+                        <div class="body">
+                            <img src="assets/imgs/analytics.svg" alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page" class="icon">
+                            <h6 class="title">Iusto</h6>
+                            <p class="subtitle">Labore velit culpa adipisci excepturi consequuntur itaque in nam molestias dolorem iste quod.</p>
+                        </div>
+                    </div>
+                </div> -->
+            </div><!-- end of row -->
+        </div>
+    </section><!-- end of service section -->
+
+    <!-- portfolio section -->
+    <section class="section" id="portfolio">
+        <div class="container text-center">
+            <!-- <p class="section-subtitle">What I Did ?</p> -->
+            <h6 class="section-title mb-6">APP Downloads</h6>
+            <!-- row -->
+            <div class="row">
+               
+                <div class="col-md-4">
+                    <a href="#" class="portfolio-card">
+                        <img class="portfolio-card-img" src="assets/imgs/idp-logo.png" class="img-responsive rounded"
+                            alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page">
+                        <span class="portfolio-card-overlay">
+                            <span class="portfolio-card-caption">
+                                <h4>iOS</h5>
+                                <p class="font-weight-normal">Download : 9.1K</p>
+                                <p class="font-weight-normal">Impression: 33K</p>
+                                <p class="font-weight-normal">Session: 41.3K</p>
+                                <p class="font-weight-normal">Rating: 4.6</p>
+                                <h4>Android</h5>
+                                <p class="font-weight-normal">Download : 340</p>
+                                <p class="font-weight-normal">Rating: 4.4</p>
+                            </span>
+                        </span>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="#" class="portfolio-card">
+                        <img src="assets/imgs/whatuni-logo.png" class="portfolio-card-img"
+                            alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page">
+                        <span class="portfolio-card-overlay">
+                            <span class="portfolio-card-caption">
+                                <h4>iOS</h5>
+                                <p class="font-weight-normal">Download : 1.6K</p>
+                                <p class="font-weight-normal">Impression: 12.3K</p>
+                                <p class="font-weight-normal">Session: 3.1K</p>
+                                <p class="font-weight-normal">Rating: 4.5</p>
+                                <h4>Android</h5>
+                                <p class="font-weight-normal">Download : 168</p>
+                                <p class="font-weight-normal">Rating: 4.3</p>
+                            </span>
+                        </span>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="#" class="portfolio-card">
+                        <img class="portfolio-card-img" src="assets/imgs/ielts-logo.png" class="img-responsive rounded"
+                            alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page">
+                        <span class="portfolio-card-overlay">
+                            <span class="portfolio-card-caption">
+                                <h4>iOS</h5>
+                                <p class="font-weight-normal">Download : 15K</p>
+                                <p class="font-weight-normal">Impression: 68.6K</p>
+                                <p class="font-weight-normal">Session: 72.3K</p>
+                                <p class="font-weight-normal">Rating: 4.2</p>
+                                <h4>Android</h5>
+                                <p class="font-weight-normal">Download : 257</p>
+                                <p class="font-weight-normal">Rating: 3.5</p>
+                            </span>
+                        </span>
+                    </a>
+                </div>
+            </div><!-- end of row -->
+        </div><!-- end of container -->
+    </section> <!-- end of portfolio section -->
+
+    <!-- pricing section -->
+    <section class="section" id="pricing">
+        <div class="container text-center">
+            <!-- <p class="section-subtitle">How Much I Charge ?</p> -->
+            <h6 class="section-title mb-6">Our Achievements</h6>
+            <!-- row -->
+            <div class="pricing-wrapper">
+                <div class="pricing-card">
+                    <div class="pricing-card-header">
+                        <img class="pricing-card-icon" src="assets/imgs/cicd.png"
+                            alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page">
+                    </div>
+                    <div class="pricing-card-body">
+                        <h6 class="pricing-card-title">CICD Pipeline</h6>
+                        <div class="pricing-card-list">
+                            <p>Faster Time-to-Market</p>
+                            <p>Improved Quality</p>
+                            <p>Increased Collaboration</p>
+                            <p>fugiat quibusdam</p>
+                            <p>Greater Efficiency</p>
+                            <p>Greater Efficiency</p>
+                        </div>
+                    </div>
+                    <!-- <div class="pricing-card-footer">
+                        <span>$</span>
+                        <span>0.00/Month</span>
+                    </div>
+                    <a href="#" class="btn btn-primary mt-3 pricing-card-btn">Subscribe</a> -->
+                </div>
+                <div class="pricing-card">
+                    <div class="pricing-card-header">
+                        <img class="pricing-card-icon" src="assets/imgs/upgrade.png"
+                            alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page">
+                    </div>
+                    <div class="pricing-card-body">
+                        <h6 class="pricing-card-title">Build stack upgrade</h6>
+                        <div class="pricing-card-list">
+                            <p>Build time will be minimised</p>
+                            <p>Supported for newest version of mobile OS</p>
+                            <!-- <p>quos neque</p>
+                            <p>fugiat quibusdam</p>
+                            <p>accusamus laboriosam</p> -->
+                            <!-- <p><i class="ti-close"></i></p> -->
+                        </div>
+                    </div>
+                    <!-- <div class="pricing-card-footer">
+                        <span>$</span>
+                        <span>9.99/Month</span>
+                    </div>
+                    <a href="#" class="btn btn-primary mt-3 pricing-card-btn">Subscribe</a> -->
+                </div>
+                <div class="pricing-card">
+                    <div class="pricing-card-header">
+                        <img class="pricing-card-icon" src="assets/imgs/ionic-upgrade.png"
+                            alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page">
+                    </div>
+                    <div class="pricing-card-body">
+                        <h6 class="pricing-card-title">Ionic upgrade</h6>
+                        <div class="pricing-card-list">
+                            <p>Improved Performance</p>
+                            <p>Access to New Features</p>
+                            <p>Enhanced Security</p>
+                            <!-- <p>fugiat quibusdam</p>
+                            <p>accusamus laboriosam</p>
+                            <p>inventore omnis</p> -->
+                        </div>
+                    </div>
+                    <!-- <div class="pricing-card-footer">
+                        <span>$</span>
+                        <span>99.9/Month</span>
+                    </div>
+                    <a href="#" class="btn btn-primary mt-3 pricing-card-btn">Subscribe</a> -->
+                </div>
+
+            </div><!-- end of pricing wrapper -->
+        </div> <!-- end of container -->
+    </section><!-- end of pricing section -->
+
+
+    <!-- footer -->
+    <div class="container">
+        <footer class="footer">
+            <div id="connected"></div>
+        </footer>
+    </div> <!-- end of page footer -->
+
+    <!-- core  -->
+    <script src="assets/vendors/jquery/jquery-3.4.1.js"></script>
+    <script src="assets/vendors/bootstrap/bootstrap.bundle.js"></script>
+
+    <!-- bootstrap 3 affix -->
+    <script src="assets/vendors/bootstrap/bootstrap.affix.js"></script>
+
+    <!-- Meyawo js -->
+    <script src="assets/js/meyawo.js"></script>
+    <script>
+        $(document).ready(function () {
+            // document.getElementById('vid').play();
+            $(".bookopen").click(function (e) {
+                var id = $(this).attr('id');
+                console.log("id", id);
+                $("#book-" + id).addClass("book-hover");
+            })
+
+            var bookList = ['Ask IDP','IELTS by IDP','Whatuni: University Degrees UK','IDP Live'];
+            bookList = bookList.sort( () => .5 - Math.random());
+            $("#book1Text").html(bookList[0])
+            $("#book2Text").html(bookList[1])
+            $("#book3Text").html(bookList[2])
+            $("#book4Text").html(bookList[3])
+            
+        });
+    </script>
+    <script>
+        // const socket = new WebSocket('ws://192.168.29.97:6969');
+        const socket = new WebSocket('wss://nodejs-serve.onrender.com');
+        socket.onopen = () => {
+            // alert('Connection opened!');
+            document.getElementById('connected').innerHTML = "Connection opened!"
+            socket.onmessage = function (event) {
+                console.log("espage", event.data);
+                console.log(JSON.parse(event.data))
+                let data = JSON.parse(event.data);
+                let type = data[0].type;
+                let option = data[0].option;
+                if(type=="game1") {
+                    $("#"+option).trigger("click");
+                }
+                // $("#roll").trigger("click");
+            };
+            //   socket.on('message',data=>{
+            //     console.log("user sended:",data.toString())
+            // })
+        }
+    </script>
+
+</body>
+
+</html>
