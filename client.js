@@ -7,20 +7,50 @@ const app = express();
 app.set("view engine", "ejs");
 app.set("views", "./views");
 let tempRes;
+
+
+const DIST_FOLDER = process.cwd()+ "/assets";
+app.get("*.js", function(req, res) {
+  let requestURL = req.url.split("/").pop();
+  res.sendFile(DIST_FOLDER +"/js/"+ requestURL);
+});
+
+app.get("*.css", function(req, res) {
+  let requestURL = req.url.split("/").pop();
+  res.sendFile(DIST_FOLDER +"/css/"+ requestURL);
+});
+
+app.get("*.jpg", function(req, res) {
+  let requestURL = req.url.split("/").pop();
+  res.sendFile(DIST_FOLDER +"/imgs/"+ requestURL);
+});
+
+app.get("*.png", function(req, res) {
+  let requestURL = req.url.split("/").pop();
+  res.sendFile(DIST_FOLDER +"/imgs/"+ requestURL);
+});
+app.get("*.mp4", function(req, res) {
+  let requestURL = req.url.split("/").pop();
+  res.sendFile(DIST_FOLDER +"/imgs/"+ requestURL);
+});
+
+
+app.get("/game1", (req, res) => {
+  res.render('game1');
+})
+app.get("/game2", (req, res) => {
+  res.render('presentation');
+})
+app.get("/game3", (req, res) => {
+  res.render('game2');
+})
+
 app.get("*", (req, res) => {
     tempRes = res
-
-
-
     let data = "This is a Heading"
     // res.send("Hello")
     // res.end();
     res.render('index',{"value":data});
-
-
-
-   
-
 });
 
 
